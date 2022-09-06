@@ -3,14 +3,14 @@ const addPostDao = require("../dao/addPostDao");
 const deletePostDao = require("../dao/deletePostDao");
 const putPostDao = require("../dao/putPostDao");
 const { boardService } = require("../service");
-
 /**
  * @Todo
  * 사용자 json 파일을 아예 잘못 넘겨준 경우도 처리하자.
  */
 const addPost = async (req, res, next) => {
   try {
-    const data = await addPostDao(req.body);
+    const data = await addPostDao(req.body, req.ip || req.ips);
+
     const post = await boardService.addPost(data);
 
     res.location(`/job/${post.board_id}`);

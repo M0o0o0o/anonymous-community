@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-catch */
 const { boardRepository } = require("../repository");
 const bcrypt = require("bcrypt");
+
 const addPost = async (data) => {
   try {
     return await boardRepository.createPost(data);
@@ -8,6 +9,7 @@ const addPost = async (data) => {
     throw err;
   }
 };
+
 const getPost = async (id) => {
   try {
     const post = await boardRepository.findPost(id);
@@ -23,6 +25,7 @@ const getPost = async (id) => {
     throw err;
   }
 };
+
 const getPosts = async (page) => {
   try {
     const posts = await boardRepository.findPosts(page);
@@ -51,6 +54,7 @@ const setPost = async (data) => {
     throw err;
   }
 };
+
 const deletePost = async (data) => {
   try {
     const post = await boardRepository.findPost(data.board_id);

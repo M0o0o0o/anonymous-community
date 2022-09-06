@@ -34,7 +34,7 @@ module.exports = class Board extends Sequelize.Model {
           unique: false,
         },
         weather: {
-          type: Sequelize.STRING(20),
+          type: Sequelize.STRING(70),
           allowNull: true,
           unique: false,
         },
