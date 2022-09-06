@@ -13,7 +13,7 @@ const app = express();
 app.set("port", process.env.PORT);
 
 db.sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     console.log("Synced database.");
   })
