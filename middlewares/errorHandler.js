@@ -8,6 +8,9 @@ function errorHandler(error, req, res, next) {
   if (error.name) {
     errorMessage.error.field = error.name;
   }
+  if (error.name == "SyntaxError") {
+    errorMessage.error.message = "잘못된 JSON 형식입니다.";
+  }
   res.status(400).json(errorMessage);
 }
 
