@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express();
 
-router.use("/", (req, res, next) => {
-  res.status(200).json({ message: "hello world" });
-});
+const boardRouter = require("./boardRouter");
+
+router.use("/board", boardRouter);
+
 module.exports = router;
