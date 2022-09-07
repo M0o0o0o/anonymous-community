@@ -13,6 +13,9 @@ const addPost = async (data) => {
 const getPost = async (id) => {
   try {
     const post = await boardRepository.findPost(id);
+
+    if (post === null) return null;
+
     return {
       board_id: post.board_id,
       nickname: post.nickname,
