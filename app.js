@@ -22,13 +22,18 @@ db.sequelize
   });
 
 app.use(cors());
-app.set("trust proxy", true);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(morgan("dev"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
+if (process.env.NODE_ENV === "production") {
+  app.enable("trust proxy", true);
+  app.use(morgan("combined"));
+} else {
+  app.use(morgan("dev"));
+}
 app.use(routes);
 app.use((req, res) => {
   res.status(404).json({ message: errorCodes.pageNotFound });
