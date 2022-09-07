@@ -7,10 +7,10 @@ function getPostsValidator() {
     query("page")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
+      .withMessage(errorCodes.REQUIRED)
       .trim()
       .isInt()
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.ONLYINT),
     index,
   ];
 }

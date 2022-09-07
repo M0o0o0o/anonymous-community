@@ -7,35 +7,35 @@ function addPostValidator() {
     body("title")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
-      .isLength({ max: 100 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.REQUIRED)
+      .isLength({ max: 20 })
+      .withMessage(errorCodes.EXCEEDLENGTH(20)),
     body("content")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
+      .withMessage(errorCodes.REQUIRED)
       .isLength({ max: 1000 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.EXCEEDLENGTH(200)),
     body("password")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
+      .withMessage(errorCodes.REQUIRED)
       .trim()
       .isLength({ min: 8, max: 16 })
       .bail()
-      .withMessage(errorCodes.wrongPwdFormat)
+      .withMessage(errorCodes.WRONGPWD)
       .matches(/[A-za-z]/)
       .bail()
-      .withMessage(errorCodes.wrongPwdFormat)
+      .withMessage(errorCodes.WRONGPWD)
       .matches(/[~!@#$%^&*()_+|<>?:{}]/)
       .bail()
-      .withMessage(errorCodes.wrongPwdFormat)
+      .withMessage(errorCodes.WRONGPWD)
       .matches(/[0-9]/)
-      .withMessage(errorCodes.wrongPwdFormat),
+      .withMessage(errorCodes.WRONGPWD),
     body("nickname")
       .optional()
       .isLength({ max: 20 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.EXCEEDLENGTH(20)),
     index,
   ];
 }
