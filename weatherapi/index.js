@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 const axios = require("axios").default;
-
+const logger = require("../logger/logger");
 module.exports = async (data) => {
   try {
     let location = "korea";
@@ -15,6 +15,7 @@ module.exports = async (data) => {
 
     return response.data.current.condition.icon;
   } catch (err) {
+    logger.error(err);
     return null;
   }
 };
