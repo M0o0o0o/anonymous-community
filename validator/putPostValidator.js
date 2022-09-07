@@ -7,19 +7,19 @@ function putPostValidator() {
     body("title")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
-      .isLength({ max: 100 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.REQUIRED)
+      .isLength({ max: 20 })
+      .withMessage(errorCodes.EXCEEDLENGTH(20)),
     body("content")
       .notEmpty()
       .bail()
-      .withMessage(errorCodes.required)
-      .isLength({ max: 1000 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.REQUIRED)
+      .isLength({ max: 200 })
+      .withMessage(errorCodes.EXCEEDLENGTH(200)),
     body("nickname")
       .optional()
       .isLength({ max: 20 })
-      .withMessage(errorCodes.wrongFormat),
+      .withMessage(errorCodes.EXCEEDLENGTH(20)),
     index,
   ];
 }

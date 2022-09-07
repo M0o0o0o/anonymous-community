@@ -4,7 +4,7 @@ const errorCodes = require("../codes/errorCodes");
 
 function pwdValidator() {
   return [
-    body("password").notEmpty().bail().withMessage(errorCodes.required),
+    body("password").notEmpty().bail().withMessage(errorCodes.REQUIRED),
     index,
   ];
 }
