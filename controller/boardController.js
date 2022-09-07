@@ -13,7 +13,7 @@ const addPost = async (req, res, next) => {
 
     const post = await boardService.addPost(data);
 
-    res.location(`/job/${post.board_id}`);
+    res.location(`/board/${post.board_id}`);
     res.status(201).end();
   } catch (err) {
     next(err);
@@ -25,6 +25,7 @@ const getPost = async (req, res, next) => {
     const post = await boardService.getPost(id);
     res.status(200).json(post);
   } catch (err) {
+    res.status(404);
     next(err);
   }
 };
